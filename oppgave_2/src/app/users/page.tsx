@@ -2,6 +2,10 @@
 
 
 import { Data, User } from "@/types/User"
+import { PrismaClient } from "@prisma/client"
+
+
+const prisma = new PrismaClient()
 
 async function fetchUserData(): Promise<User[]> {
   try {
@@ -23,8 +27,40 @@ async function fetchUserData(): Promise<User[]> {
   return (
     <div>
       <h1>User Data</h1>
+      <ul className="px-6">
+        {userData.data.map((user, index) => (
+          <li key={index} className="border-solid border-2 border-red-500">
+            <h2>User ID: {user.id}</h2>
+            <p>Gender: {user.gender}</p>
+            <p>Sport: {user.sport}</p>
+            
+           
+          </li>
+        ))}
+      </ul>
+
+      {/* <ul className="px-6">
+        {userData.data.map((user, index) => (
+          <li key={index} >
+            
+            <p>Heartrate: {user.meta.heartrate}</p>
+            <p>Watt: {user.meta.watt}</p>
+            <p>Speed: {user.meta.speed} </p>
+           
+          </li>
+        ))}
+      </ul> */}
+    </div>
+  )
+}
+
+
+  
+
+{/* <div>
+      <h1>User Data</h1>
       <ul>
-        {userData.map((user:User , index) => {
+        {userData.data.map((user:User , index) => {
           console.log(user)
           return (
             <li key={index}>
@@ -33,10 +69,4 @@ async function fetchUserData(): Promise<User[]> {
           )
         })}
       </ul>
-    </div>
-  )
-}
-
-
-  
-
+    </div> */}

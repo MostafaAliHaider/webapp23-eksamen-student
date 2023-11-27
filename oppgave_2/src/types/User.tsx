@@ -36,12 +36,26 @@ export type User = {
     userId: string,
     gender: string,
     sport: string,
+    data: User[]
     meta: {
         heartrate: number;
         watt: number;
         speed: number;
     }
 }
+
+// export type User = {
+//     id: string,
+//     userId: string,
+//     gender: string,
+//     sport: string,
+//     data: User[]
+//     meta: {
+//         heartrate: number;
+//         watt: number;
+//         speed: number;
+//     }
+// }
 export type Activity = {
     date: string;
     goalId?: string;
